@@ -3,6 +3,8 @@ class Expert < ApplicationRecord
   after_create :create_headings
 
   has_many :expert_headings
+  has_many :friendships, foreign_key: 'expert_id', class_name: 'Friendship'
+  has_many :friends, through: :friendships
 
   validates :name, presence: true
   validates :personal_website_url, presence: true
@@ -25,5 +27,10 @@ class Expert < ApplicationRecord
         )
       end
     end
+  end
+
+  def befriend(expert)
+    self.friends << expert
+    expert.friends << self
   end
 end

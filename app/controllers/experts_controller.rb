@@ -11,6 +11,9 @@ class ExpertsController < ApplicationController
   # GET /experts/1.json
   def show
     @headings = ExpertHeading.where(expert: @expert)
+    friend_ids = Friendship.where(expert: @expert).pluck(:friend_id)
+    friend_ids << @expert.id
+    @all_experts = Expert.where.not(id: friend_ids)
   end
 
   # GET /experts/new
@@ -59,6 +62,17 @@ class ExpertsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to experts_url, notice: 'Expert was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def befriend
+    @expert = Expert.find(params[:expert_id])
+    friend = Expert.find(params[:friend_id])
+    @expert.befriend(friend)
+
+    respond_to do |format|
+      format.html { redirect_to @expert, notice: "Successfully befriended #{friend.name}" }
+      format.json { render :show, status: :ok, location: @expert }
     end
   end
 

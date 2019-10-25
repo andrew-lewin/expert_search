@@ -27,5 +27,17 @@
   </table>
 </p>
 
+<p>
+  <strong>Experts to Befriend:</strong>
+  <table>
+    <% @all_experts.each do |expert| %>
+      <tr>
+        <td><%= expert.name %></td>
+        <td><%= button_to 'Befriend', expert_befriend_path(@expert), params: { friend_id: expert.id } %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
 <%= link_to 'Edit', edit_expert_path(@expert) %> |
 <%= link_to 'Back', experts_path %>
