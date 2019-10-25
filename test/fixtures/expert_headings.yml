@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expert_id: 1
+  heading_type: MyString
+  value: MyString
+
+two:
+  expert_id: 1
+  heading_type: MyString
+  value: MyString

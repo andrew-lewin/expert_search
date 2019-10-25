@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 'Expert One'
+  personal_website_url: 'http://www.lolcats.com/'
+  shortend_url: 'http://www.lolcats.com/'
+
+two:
+  name: 'Expert Two'
+  personal_website_url: 'http://www.lolcats.com/'
+  shortend_url: 'http://www.lolcats.com/'
